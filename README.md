@@ -37,46 +37,30 @@ grunt.initConfig({
 
 ### Options
 
-#### options.separator
+#### options.spaceCnt
+Type: `Number`
+Default value: `4`
+
+A number value that is the count of space will be replace to for one tab.
+
+#### options.encoding
 Type: `String`
-Default value: `',  '`
+Default value: `utf-8`
 
-A string value that is used to do something with whatever.
-
-#### options.punctuation
-Type: `String`
-Default value: `'.'`
-
-A string value that is used to do something else with whatever else.
+A string value that is this file's encoding.
 
 ### Usage Examples
 
 #### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
+In this example, the default options are used to do something with whatever. So if the `test.js` file has the content 
+`Tab` in the start of the line , the generated result would be replace to `space`
 
 ```js
 grunt.initConfig({
   tabtospace: {
     options: {},
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-});
-```
-
-#### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
-
-```js
-grunt.initConfig({
-  tabtospace: {
-    options: {
-      separator: ': ',
-      punctuation: ' !!!',
-    },
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
+    src: {
+      'src/test.js'
     },
   },
 });
