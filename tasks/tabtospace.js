@@ -19,10 +19,10 @@ module.exports = function(grunt) {
           encoding: 'utf-8'
       });
 
-      var getSpace = function () {
+      var getSpace = function (cnt) {
           var space = [];
           var i = 0;
-          while (i < options.spaceCnt) {
+          while (i < cnt) {
               space.push(' ');
               i++;
           }
@@ -31,8 +31,12 @@ module.exports = function(grunt) {
       var analysisFileData = function (data) {
           //
           data = data.replace(/^(\s)+/gm, function (tab) {
-              var space = getSpace();
+              var space = getSpace(options.spaceCnt);
               var ret = tab.replace(/\t/g, space);
+              var len = ret.length;
+              // 这里保证下空格的个数是 spaceCnt 的整数倍
+              len = len - ret.length % options.spaceCnt;
+              ret = getSpace(len);
               return ret;
           });
           return data;
