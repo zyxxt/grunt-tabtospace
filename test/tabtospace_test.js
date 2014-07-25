@@ -27,22 +27,23 @@ exports.tabtospace = {
     // setup here if necessary
     done();
   },
-  default_options: function(test) {
-    test.expect(1);
 
-    var actual = grunt.file.read('tmp/default_options');
-    var expected = grunt.file.read('test/expected/default_options');
-    test.equal(actual, expected, 'should describe what the default behavior is.');
-
-    test.done();
-  },
   custom_options: function(test) {
-    test.expect(1);
+//    test.expect(1);
+    var err = 0;
+    var content = grunt.file.read('./test/fixtures/123');
+    content.split(/\r?\n/).forEach(function (item, idx, arr) {
+        var match = item.match(/^(\s*).*/);
+        if (match && match[1]) {
+            match = match[1];
+            if (match.indexOf('\t') !== -1) {
+                err = 1;
+                test.equal(err, 0, 'erfdasfadfr: ' + item);
+                return false;
+            }
+        }
+    });
 
-    var actual = grunt.file.read('tmp/custom_options');
-    var expected = grunt.file.read('test/expected/custom_options');
-    test.equal(actual, expected, 'should describe what the custom option(s) behavior is.');
-
-    test.done();
-  },
+//    test.done();
+  }
 };

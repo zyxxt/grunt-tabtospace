@@ -30,20 +30,13 @@ module.exports = function(grunt) {
 
     // Configuration to be run (and then tested).
     tabtospace: {
-      default_options: {
-        options: {
-        },
-        files: {
-          'tmp/default_options': ['test/fixtures/testing', 'test/fixtures/123']
-        }
-      },
       custom_options: {
         options: {
-          separator: ': ',
-          punctuation: ' !!!'
+          spaceCnt: 2,
+          encoding: 'utf-8'
         },
         files: {
-          'tmp/custom_options': ['test/fixtures/testing', 'test/fixtures/123']
+          'tmp/custom_options': ['test/fixtures/123']
         }
       }
     },

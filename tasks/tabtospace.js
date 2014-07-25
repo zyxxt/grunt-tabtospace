@@ -39,6 +39,9 @@ module.exports = function(grunt) {
               ret = getSpace(len);
               return ret;
           });
+          data = data.replace(/\s+$/gm, function (space) {
+              return '';
+          });
           return data;
       };
 
